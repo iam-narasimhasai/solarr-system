@@ -9,25 +9,25 @@ on:
 
 env:
   MONGO_URI: 'mongodb+srv://cluster0.awxhn.mongodb.net/superData'
-  MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
+  MONGO_USERNAME: "sai"
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
 jobs:
-    unit-testing:
-      name: Unit Testing
-      runs-on: ubuntu-latest
-      steps:
+  unit-testing:
+    name: Unit Testing
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup NodeJS Version - 18
+      - name: Setup Node.js Version 18
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-      
+          node-version: '18'
+
       - name: Install Dependencies
         run: npm install
 
-      - name: Unit Testing
-        run: npm test 
-
+      - name: Run Unit Tests
+        run: npm test
